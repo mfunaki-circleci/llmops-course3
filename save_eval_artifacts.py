@@ -2,9 +2,9 @@ import pandas as pd
 from app import assistant_chain, quiz_bank
 from IPython.display import display, HTML
 
-from langchain.prompts import ChatPromptTemplate
-from langchain.chat_models import ChatOpenAI
-from langchain.schema.output_parser import StrOutputParser
+from langchain_core.prompts         import ChatPromptTemplate
+from langchain_google_vertexai      import ChatVertexAI
+from langchain_core.output_parsers  import StrOutputParser
 
 eval_system_prompt = """You are an assistant that evaluates how well the quiz assistant
     creates quizzes for a user by looking at the set of facts available to the assistant.
@@ -84,9 +84,11 @@ def create_eval_chain():
     )
 
     return (
-        eval_prompt
-        | ChatOpenAI(model="gpt-3.5-turbo", temperature=0)
-        | StrOutputParser()
+        eval_prompt |
+        ChatVertexAI(project='plucky-agent-412507', model_name="gemini-pro", 
+                     convert_system_message_to_human=True,
+                     temperature=0) | 
+        StrOutputParser()
     )
 
 
