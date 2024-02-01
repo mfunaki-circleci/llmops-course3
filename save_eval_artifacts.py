@@ -70,11 +70,11 @@ dataset = [
         "response": "geography",
         "subjects": ["paris", "france", "louvre"],
     },
-    {
-        "input": "Quiz me about Italy",
-        "response": "geography",
-        "subjects": ["rome", "alps", "sicily"],
-    },
+#    {
+#        "input": "Quiz me about Italy",
+#        "response": "geography",
+#        "subjects": ["rome", "alps", "sicily"],
+#    },
 ]
 
 
