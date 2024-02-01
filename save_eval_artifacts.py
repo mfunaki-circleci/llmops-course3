@@ -2,6 +2,9 @@ import pandas as pd
 from app import assistant_chain, quiz_bank
 from IPython.display import display, HTML
 
+import google.auth
+credentials, project_id = google.auth.default()
+
 from langchain_core.prompts         import ChatPromptTemplate
 from langchain_google_vertexai      import ChatVertexAI
 from langchain_core.output_parsers  import StrOutputParser
